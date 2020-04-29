@@ -47,6 +47,7 @@ def process_results(news_list):
         
         News_object = News(id,name,author,title,description,url,publishedAt,content,urlToImage)
         News_results.append(News_object)
+        
     
     return News_results
 
