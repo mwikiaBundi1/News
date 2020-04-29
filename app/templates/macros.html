@@ -1,16 +1,34 @@
-{% macro displayNewsList(news_list) %}
-
+<!-- {% macro displayNewsList(news_list) %}
     {% for news in news_list %}
         <li>{{ news.title}}</li>
     {% endfor %}
 
+{% endmacro %} -->
+{% macro displayNewsList(news_list) %}
+    {% for news in news_list %}
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 news-card bg-light ">
+        <a href="{{news.url}}" target="blank"><h3 class="text-danger">{{ news.title}} </h3></a>
+        <img src="{{news.urlToImage}}" alt="news.title" height=160 width="=150">
+        <!--<p> {{ news | truncate(30) }}</p>-->
+        <p class="text-success"> {{ news.content }}</p>
+        <a class="btn btn-success" href="{{news.url}}">Read Article</a>
+        <p>Posted : {{news.publishedAt}}</p>
+        <!---
+            Add an if else statement here such that if news.content is none, you display news.content
+            On the image, I am not sure what is the syntanx but if the syntax i correct, it should fetch the image just fine.
+        -->
+     
+       
+        
+    </div>
+    {% endfor %}
 {% endmacro %}
 
 {% macro displaySourceList(source_list) %}
 
     {% for news in source_list %}
         <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-            <img src="{{ news.urlToIMage }}" alt="{{ news.title }} poster" class="img-responsive">
+            <img src="{{ news.urlToIMage }}" alt="{{ news.title }} poster" class="img-responsive" />
             <li class="text-center">
                 <a href="/articles/{{articles.id}}">
                     {{ news.title|truncate(10)}}</a>

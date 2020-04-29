@@ -5,7 +5,7 @@
 
 {% block styles%}
     {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
 {% endblock %}
 <!-- Content block -->
 
@@ -23,22 +23,24 @@
 
 
 
-
-<div class = "container">
+<ul>
+<li class = "container">
     {{macro.displayNewsList(sports)}}
-</div>
+    
+
+</li>
 
 
 
-<div class = "container">
+<li class = "container">
     {{macro.displayNewsList(general)}}
-</div>
+</li>
 
 
 
-<div class = "container">
+<li class = "container">
     {{macro.displayNewsList(entertainment)}}
-</div>
+</li>
    
-
+</ul>
 {% endblock %}

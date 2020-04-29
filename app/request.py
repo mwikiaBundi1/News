@@ -17,7 +17,7 @@ def get_News(category):
     Function that gets the json response to our url request
     '''
     get_News_url = base_url.format(category,api_key)
-
+    
     with urllib.request.urlopen(get_News_url) as url:
         get_News_data = url.read()
         get_News_response = json.loads(get_News_data)
@@ -47,7 +47,7 @@ def process_results(news_list):
         
         News_object = News(id,name,author,title,description,url,publishedAt,content,urlToImage)
         News_results.append(News_object)
-
+    
     return News_results
 
 def get_News_url(id):
@@ -86,18 +86,20 @@ def search_news(news_name, _api_key):
     with urllib.request.urlopen(search_news_url) as url:
         search_news_data = url.read()
         search_news_response = json.loads(search_news_data)
+        #print(search_news_response);exit(0)
 
-        search_news_results = None
-
-        if search_news_response['articles'] and search_news_response['totalResults'] !=0:
+        #search_news_results = None
+        _test_list = search_news_response['articles']
+        #assert(_test_list is not None)
+        if search_news_response['articles']:
             search_news_list = search_news_response['articles']
             search_news_results = process_results(search_news_list)
         else:
             print("No data retrieved!")
-        
 
-
-    return search_news_results
+    
+    #return search_news_results
+    return _test_list
 
 
 if __name__ == '__main__':
